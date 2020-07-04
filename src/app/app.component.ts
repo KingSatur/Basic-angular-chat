@@ -16,8 +16,8 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.chatService.escucharMensajePrivado().subscribe((mensajePrivado) => {
-      console.log(mensajePrivado);
-    });
+    // this.chatService.escucharMensajePrivado().subscribe((mensajePrivado) => {
+    //   console.log(mensajePrivado);
+    // });
   }
 }

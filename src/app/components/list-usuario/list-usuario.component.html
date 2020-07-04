@@ -1,1 +1,15 @@
-<p>list-usuario works!qwerweqr</p>
+<h1>
+  Usuarios
+</h1>
+<hr />
+
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let user of usuarios | async">
+    <span class="badge badge-primary">
+      {{ user["nombre"] }}
+    </span>
+    <span class="badge badge-info">
+      {{ user["id"] }}
+    </span>
+  </li>
+</ul>

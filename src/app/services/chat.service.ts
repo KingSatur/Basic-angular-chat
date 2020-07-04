@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { WebsocketService } from './websocket.service';
+import { ThrowStmt } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root',
@@ -7,10 +8,10 @@ import { WebsocketService } from './websocket.service';
 export class ChatService {
   constructor(public wsService: WebsocketService) {}
 
-  sendMessage(mensaje: string) {
+  sendMessage(cuerpo: string) {
     const payload = {
       de: JSON.parse(localStorage.getItem('usuario'))['nombre'],
-      mensaje,
+      cuerpo,
     };
 
     this.wsService.emit('mensaje', payload);
@@ -22,5 +23,13 @@ export class ChatService {
 
   escucharMensajePrivado() {
     return this.wsService.listen('mensaje-privado');
+  }
+
+  getUsuariosActivos() {
+    return this.wsService.listen('usuarios-activos');
+  }
+
+  emitirUsuariosActivos() {
+    this.wsService.emit('obtener-usuarios');
   }
 }
